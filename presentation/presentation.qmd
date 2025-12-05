@@ -1,0 +1,117 @@
+---
+title: "Historical Games of Competitive Chess Players"
+format: 
+    revealjs:
+        embed-resources: true
+editor: visual
+---
+
+## Network Construction
+
+::: {style="font-size: 0.6em; color: #36454F;"}
+
+- Data Source: Lumbra's GigaBase.
+- Data Source: December 2025 FIDE standard rating list.
+- Data Limitations: potential name-merging errors, errors of omission.
+- Undirected multigraph $G = (V, E)$
+-  $V:$ Players rated 1800+
+-  $E:$ Chess games
+- $n = 526,519$ vertices
+- $m = 9,570,564$ edges
+- Computationally intensive
+
+:::
+
+## Centrality Measures
+
+
+:::: {.columns}
+
+::: {.column width="40%" style="font-size: 0.5em; color: #36454F;"}
+
+- **Top 5 by Degree Centrality:** Victor Korchnoi, Russell Sherwood, Vasyl Ivanchuk, Alexei Shirov, Ivan Farago
+- **Top 5 by Eigenvector Centrality:** Viswanathan Anand, Levon Aronian, Vasyl Ivanchuk, Vladimir Kramnik, Boris Gelfand
+- **Top 5 by Betweenness Centrality:** Romain Edouard, Jaan Ehlvest, Lopez, Gawain Maroroa Jones, Efstratios Grivas
+- No strong correlation between centrality measures
+
+:::
+
+::: {.column width="60%" style='font-size: 0.4em;'}
+::: {layout-ncol=3}
+![Viktor Korchnoi, 2011 (left) and 1955 (right)](old_korchnoi.jpg)
+
+![](young_korchnoi.jpg)
+
+![Vladimir Kramnik (left) and Vishwanathan Anand (right)](kramnik_anand.jpg)
+::: 
+:::
+::::
+
+::: {layout-ncol=3}
+![](deg_by_eig.png)
+
+![](betw_by_deg.png)
+
+![](eig_by_betw.png)
+:::
+
+
+
+## Assortativity and Clustering
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 0.6em; color: #36454F;"}
+
+- Degree Assortativity $\approx 0.39$.
+- Title Assortativity $\approx 0.003$.
+- Global clustering coefficient $\approx 0.09$.
+- Average local clustering coefficient $\approx 0.19$.
+
+:::
+
+::: {.column width="40%"}
+![](degree_mixing.png)
+:::
+
+::::
+
+## Modularity and Community Structure
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 0.6em; color: #36454F;"}
+
+- K-cores
+- Dense, highly connected subgraphs
+- Modularity score with respect to title $\approx 0.00027$.
+
+:::
+
+::: {.column width="40%"}
+![](k_core_sizes.png)
+:::
+
+::::
+
+## Real-World Properties
+
+:::: {.columns}
+
+::: {.column width="60%" style="font-size: 0.6em; color: #36454F;"}
+
+- Giant component: $514,305$ nodes.
+- Degree distribution is similar to power-law distribution with exponential cutoff in the tail.
+- Average Geodesic Length $\approx 4.44$.
+
+:::
+
+::: {.column width="40%"}
+![](giant_component.png)
+
+![](degree_distribution.png)
+:::
+
+::::
+
+# Verdict: Is it a Real-World Network?
